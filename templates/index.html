@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>TradeBot — Advanced Simulation</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial@3.0.0/dist/chartjs-chart-financial.min.js"></script>
+  <style>
+    body{font-family:Tahoma, Arial; direction:rtl; padding:12px; background:#0b1221; color:#e6eef8}
+    .top{display:flex; gap:12px; align-items:center}
+    .card{background:#0f1724; padding:12px; border-radius:10px; box-shadow: 0 6px 18px rgba(0,0,0,0.6)}
+    #chart{width:100%; height:420px}
+    table{width:100%; border-collapse:collapse; margin-top:10px}
+    th,td{padding:6px;border-bottom:1px solid rgba(255,255,255,0.05); text-align:center}
+    .green{color:#7cf3a6} .red{color:#ff9b9b}
+    .controls{display:flex; gap:8px; margin:8px 0}
+    select, button, input{padding:6px 8px; border-radius:6px; background:#071025; color:#e6eef8; border:1px solid rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+  <div class="top">
+    <h2>TradeBot — Advanced Simulation</h2>
+    <div style="margin-left:auto">
+      <span id="balance" class="card">الرصيد: $--</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:10px">
+    <div class="controls">
+      <label>الرمز:
+        <select id="symbolSelect"></select>
+      </label>
+      <label>شموع:
+        <select id="limitSelect"><option>200</option><option>500</option><option>1000</option></select>
+      </label>
+      <button id="refreshBtn">تحديث</button>
+      <button id="runBacktest">محاكاة تاريخية</button>
+      <a id="download" style="margin-left:auto;color:#8cd4ff">تحميل سجل الصفقات</a>
+    </div>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <div class="card" id="statsCard" style="margin-top:12px">
+    <strong>نتائج المحاكاة</strong>
+    <div id="stats" style="margin-top:6px">جارِ التحميل...</div>
+
+    <table id="tradesTable">
+      <thead><tr><th>الوقت</th><th>الزوج</th><th>المدخل</th><th>الخروج</th><th>الربح $</th><th>الرصيد بعد</th><th>السبب</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
